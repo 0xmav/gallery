@@ -1,16 +1,29 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
 
+:root {
+    --primary-light: #F8F6F4;
+    --secondary-light: #eee9e4; 
+    --icon-light: #a3a3a3;
+    --text-light: #7c7c7c;
+
+
+    --primary-dark: #131313;
+    --secondary-dark: #282828;
+    --icon-dark: #a3a3a3;
+    --text-dark: #7c7c7c;
+}
+
 body {
     font-family: "Inter", sans-serif;
 }
 
 a {
-    color: #7c7c7c;
+    color: var(--text-light);
 }
 
 header {
-    background-color: #f8f6f4;
+    background-color: var(--primary-light);
     padding: 20px 50px;
 }
 
@@ -32,7 +45,7 @@ header {
 .icon {
     width: 14px;
     height: 14px;
-    color: #a3a3a3;
+    filter: invert(12%) sepia(10%) saturate(0%) hue-rotate(266deg) brightness(105%) contrast(92%);
 }
 
 .menu .icon-dark-mode {
@@ -46,8 +59,8 @@ header {
     justify-content: space-between;
     padding: 0 25px;
     align-items: stretch;
-    background-color: #eee9e4;
-    color: #a3a3a3;
+    background-color: var(--secondary-light);
+    color: var(--icon-light);
     border-radius: 4px;
     font-size: 12px;
 }
@@ -100,10 +113,8 @@ header .title p {
     grid-gap: 50px;
 }
 
-
-
 .collection-element {
-    border-bottom: #ebe9e5 1px solid;
+    border-bottom: var(--secondary-light) 1px solid;
 }
 
 .collection-desc,
@@ -117,7 +128,7 @@ header .title p {
 
 .artist-link,
 .token-name {
-    color: #7c7c7c;
+    color: var(--text-light);
 }
 
 .collection-desc h3 {
@@ -140,7 +151,7 @@ header .title p {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #f8f6f4;
+    background-color: var(--primary-light);
     aspect-ratio: 1 / 1;
 }
 
@@ -156,7 +167,7 @@ header .title p {
 
 .collection-img:has(.lazy-load-image-loaded) img:hover,
 .token-img:has(.lazy-load-image-loaded) img:hover {
-    box-shadow: #e9e9e9 0px 20px 20px 0px;
+    box-shadow: rgba(0, 0, 0, 0.14) 0px 20px 20px 0px;
     transform: scale(1.05) translateY(-10px);
     cursor: pointer;
 }
@@ -172,7 +183,6 @@ header .title p {
     align-self: center;
 }
 
-
 .button {
     height: 60;
     display: block;
@@ -185,23 +195,23 @@ header .title p {
 }
 
 .button-secondary {
-    background-color: #eee9e4;
-    color: #131313;
+    background-color: var(--secondary-light);
+    color: var(--primary-dark);
 }
 
 .button-secondary:hover {
-    background-color: #131313;
+    background-color: var(--primary-dark);
     color: #fafafa;
     cursor: pointer;
 }
 
 .button-primary {
-    background-color: #131313;
+    background-color: var(--primary-dark);
     color: #fafafa;
 }
 
 .button-primary:hover {
-    background-color: #282828;
+    background-color: var(--secondary-dark);
     cursor: pointer;
 }
 
@@ -216,7 +226,7 @@ footer {
 
 footer p {
     font-size: 0.8em;
-    color: #303030;
+    color: var(--secondary-dark);
 }
 
 /* modal */
@@ -245,7 +255,6 @@ footer p {
     top: 20px;
     right: 20px;
     font-size: 30px;
-    color: #ffffff;
     z-index: 999;
     cursor: pointer;
 }
@@ -305,3 +314,63 @@ footer p {
         grid-template-columns: 1fr 1fr 1fr;
     } 
  }
+
+body.dark {
+    background-color: var(--secondary-dark);
+}
+
+.dark a {
+    color: var(--text-dark);
+}
+
+.dark header {
+    background-color: var(--primary-dark);
+}
+
+.dark header h1 {
+    color: var(--secondary-light)
+}
+
+.dark header p {
+    color: var(--text-light)
+}
+
+.dark .logo {
+    color: var(--primary-light);
+}
+
+.dark .icon {
+    filter: invert(74%) sepia(0%) saturate(962%) hue-rotate(210deg) brightness(89%) contrast(88%);
+}
+
+.dark .search-bar {
+    background-color: var(--primary-dark);
+    color: var(--icon-dark);
+}
+
+.dark .button-secondary {
+    background-color: var(--primary-dark);
+    color: var(--primary-light);
+}
+
+.dark .button-secondary:hover {
+    background-color: var(--secondary-dark);
+    color: var(--secondary-light);
+}
+
+.dark .collection-element {
+    border-bottom: var(--primary-dark) 1px solid;
+}
+
+.dark .collection-desc h3 {
+    color: var(--primary-light);
+}
+
+.dark .artist-link,
+.dark .token-name {
+    color: var(--text-dark);
+}
+
+.dark .collection-img {
+    background-color: #404040;
+}
