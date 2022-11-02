@@ -317,6 +317,7 @@ footer p {
 
 body.dark {
     background-color: var(--secondary-dark);
+    caret-color: var(--primary-light);
 }
 
 .dark a {
@@ -371,6 +372,11 @@ body.dark {
     color: var(--text-dark);
 }
 
-.dark .collection-img {
+.dark .collection-img, .dark .token-img {
     background-color: #404040;
+}
+
+.dark .overlay {
+    background: rgba(0, 0, 0, 0.9);
+    color: var(--primary-light)
 }
