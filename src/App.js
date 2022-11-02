@@ -22,7 +22,6 @@ function App() {
                     variants={{ initialState: { opacity: 0 }, animateState: { opacity: 1 }, exitState: {} }}
                 >
                     <BrowserRouter>
-                        <Header />
                         <Routes>
                             <Route path="/" element={<CollectionGrid />} />
                             <Route path="/collection/:project_id" element={<CollectionPage />} />

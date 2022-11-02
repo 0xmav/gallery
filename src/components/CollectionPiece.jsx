@@ -37,6 +37,9 @@ function CollectionPiece(props) {
     const [isClicked, setClicked] = useState(false);
     const [clickedImg, setClickedImg] = useState(null);
 
+    props.setTitle(data.collection_name.split("by").shift());
+    props.setSubtitle(data.collection_name.split("by").pop());
+
     function fullScreen() {
         setClickedImg(data.image);
         setClicked(!isClicked);

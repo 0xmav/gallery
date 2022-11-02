@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import CollectionElement from "./CollectionElement";
 import artBlocksCollections from "../collections";
+import Header from "./Header";
 
 function CollectionGrid() {
     let elementQuantity = 6;
@@ -12,6 +13,7 @@ function CollectionGrid() {
 
     return (
         <>
+            <Header />
             <section className="collections-grid">
                 {artBlocksCollections.slice(0, next).map((collection, index) => {
                     const projectID = artBlocksCollections[index].project_id;

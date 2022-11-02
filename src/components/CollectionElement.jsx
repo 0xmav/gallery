@@ -3,7 +3,6 @@ import {artblocksFetchProject} from "../artblocksFetch";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import {motion} from "framer-motion"
 
-
 function CollectionElement(props) {
     const [data, setData] = useState({
         projectID: props.projectID,

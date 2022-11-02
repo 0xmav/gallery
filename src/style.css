@@ -97,6 +97,8 @@ header .title p {
     grid-gap: 50px;
 }
 
+
+
 .collection-element {
     border-bottom: #ebe9e5 1px solid;
 }
@@ -136,7 +138,7 @@ header .title p {
     justify-content: center;
     align-items: center;
     background-color: #f8f6f4;
-    height: 385px;
+    aspect-ratio: 1 / 1;
 }
 
 .collection-img img,
@@ -264,3 +266,39 @@ footer p {
     transform: translate(0, 10px);
     transition: all 300ms ease-in;
   }
+
+
+  /* Extra small devices (phones, 600px and down) */
+@media (max-width: 600px) { 
+    .collections-grid { 
+        grid-template-columns: 1fr;
+    } 
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media (min-width: 600px) { 
+    .collections-grid { 
+        grid-template-columns: 1fr;
+    } 
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media (min-width: 768px) { 
+    .collections-grid { 
+        grid-template-columns: 1fr 1fr;
+    } 
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media (min-width: 992px) { 
+    .collections-grid { 
+        grid-template-columns: 1fr 1fr 1fr;
+    } 
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media (min-width: 1200px) { 
+    .collections-grid { 
+        grid-template-columns: 1fr 1fr 1fr;
+    } 
+ }

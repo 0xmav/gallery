@@ -1,6 +1,6 @@
 import React from "react";
 
-function Header() {
+function Header({title="ArtBlocks Curated", subtitle="Discovering, tracking and purchasing Art Blocks on the secondary market just got a whole lot better."}) {
     function handleClick(e) {
         e.preventDefault();
         console.log("click");
@@ -25,8 +25,8 @@ function Header() {
             </div>
 
             <div className="title">
-                <h1>ArtBlocks Curated</h1>
-                <p>Discovering, tracking and purchasing Art Blocks on the secondary market just got a whole lot better.</p>
+                <h1>{title}</h1>
+                <p>{subtitle}</p>
             </div>
         </header>
     );
