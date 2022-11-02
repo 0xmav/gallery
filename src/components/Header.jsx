@@ -9,6 +9,7 @@ function Header({ title = "ArtBlocks Curated", subtitle = "Discovering, tracking
     const [searchTerm, setSearchTerm] = useState();
     const navigate = useNavigate();
 
+
     function handleChange(event) {
       const newValue = event.target.value;
       setInputText(newValue);
@@ -22,13 +23,16 @@ function Header({ title = "ArtBlocks Curated", subtitle = "Discovering, tracking
     }
 
         useEffect( () => {
+
+
             if(searchTerm !== undefined) {
 
-                const search = artBlocksCollections.find(x => x.name === searchTerm).project_id;
+                const searchResult = artBlocksCollections.find(x => x.name === searchTerm);
 
-                    if(search !== undefined && search !== NaN && search !== null) {
-                        
-                        navigate(`/collection/${search}`);
+                    if(searchResult !== undefined && searchResult !== null) {
+
+                        const found = searchResult.project_id;
+                        navigate(`/collection/${found}`);
 
                     } else { return }
 

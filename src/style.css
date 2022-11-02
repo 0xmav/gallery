@@ -14,8 +14,6 @@
     --text-dark: #7c7c7c;
 }
 
-
-
 body {
     font-family: "Inter", sans-serif;
 }
@@ -389,4 +387,17 @@ body.dark {
 .dark .overlay {
     background: rgba(0, 0, 0, 0.9);
     color: var(--primary-light)
+}
+
+.dark footer p {
+    color: var(--secondary-light);
+}
+
+.dark footer {
+    border-top: var(--primary-dark) 1px solid;
+}
+
+.dark .logo-letter {
+    background-color: var(--primary-light);
+    color: var(--primary-dark);
 }
