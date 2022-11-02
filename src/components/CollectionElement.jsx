@@ -4,9 +4,10 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import {motion} from "framer-motion"
 
 function CollectionElement(props) {
+    
     const [data, setData] = useState({
         projectID: props.projectID,
-        tokenID: null,
+        tokenID: props.tokenID,
         name: "",
         collection_name: "",
         image: "",
@@ -19,12 +20,11 @@ function CollectionElement(props) {
 
     useEffect(() => {
         const fetchData = async () => {
-            const fetchedData = await artblocksFetchProject(props.projectID);
+            const fetchedData = await artblocksFetchProject(data.projectID);
 
-            setData(function() {
+            setData((prev) => {
                 return {
-                    projectID: props.projectID,
-                    tokenID: fetchedData.tokenID,
+                    ...prev,
                     name: fetchedData.name,
                     collection_name: fetchedData.collection_name,
                     image: "https://media.artblocks.io/" + +fetchedData.tokenID + ".png", // Workaround for Squiggles -> bad image metadata
@@ -33,11 +33,9 @@ function CollectionElement(props) {
                     description: fetchedData.description,
                     collectionLink: "/collection/" + data.projectID,
                     placeholder: "https://res.cloudinary.com/art-blocks/image/fetch/f_auto,c_limit,w_10,q_auto/https://artblocks-mainnet.s3.amazonaws.com/" + +fetchedData.tokenID + ".png",
-                };
-            });
-
-
-        };
+                    };
+                });
+            };
 
         fetchData();
     }, []);

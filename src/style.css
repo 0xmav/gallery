@@ -14,6 +14,8 @@
     --text-dark: #7c7c7c;
 }
 
+
+
 body {
     font-family: "Inter", sans-serif;
 }
@@ -34,6 +36,14 @@ header {
     font-size: 1.5em;
     text-decoration: none;
     color: black;
+}
+
+.logo-letter {
+    background-color: var(--primary-dark);
+    padding: 0 .4em;
+    margin-right: .05em;
+    color: var(--primary-light);
+    border-radius: 3px;
 }
 
 .menu {

@@ -24,6 +24,7 @@ function App() {
                         <Routes>
                             <Route path="/" element={<CollectionGrid />} />
                             <Route path="/collection/:project_id" element={<CollectionPage />} />
+                            <Route path="/?search=:project_id" element={<CollectionPage />} />
                         </Routes>
                         <Footer />
                     </BrowserRouter>

@@ -3,6 +3,7 @@ import { artblocksFetchToken } from "../artblocksFetch";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
 function CollectionPiece(props) {
+
     const [data, setData] = useState({
         projectID: props.projectID,
         tokenID: props.tokenID,
@@ -15,12 +16,11 @@ function CollectionPiece(props) {
 
     useEffect(() => {
         const fetchData = async () => {
-            const fetchedData = await artblocksFetchToken(props.projectID, props.tokenID);
+            const fetchedData = await artblocksFetchToken(data.projectID, data.tokenID);
 
-            setData(function () {
+            setData((prev) => {
                 return {
-                    projectID: props.rojectID,
-                    tokenID: props.tokenID,
+                    ...prev,
                     name: fetchedData.name,
                     collection_name: fetchedData.collection_name,
                     image: "https://media.artblocks.io/hd/" + +fetchedData.tokenID + ".png", // Workaround for Squiggles -> bad image metadata

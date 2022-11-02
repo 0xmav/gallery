@@ -9,7 +9,7 @@ function CollectionPage() {
     const [title, setTitle] = useState(" ");
     const [subtitle, setSubtitle] = useState(" ");
 
-    const projectID = useParams().project_id;
+    const projectID = parseInt(useParams().project_id);
 
     let elementQuantity = 6;
 
