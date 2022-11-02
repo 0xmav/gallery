@@ -6,8 +6,8 @@ import Header from "./Header"
 
 function CollectionPage() {
     
-    const [title, setTitle] = useState("");
-    const [subtitle, setSubtitle] = useState("");
+    const [title, setTitle] = useState(" ");
+    const [subtitle, setSubtitle] = useState(" ");
 
     const projectID = useParams().project_id;
 

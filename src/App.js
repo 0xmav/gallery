@@ -1,5 +1,4 @@
 import React from "react";
-import Header from "./components/Header";
 import Footer from "./components/Footer";
 import CollectionGrid from "./components/CollectionGrid";
 import CollectionPage from "./components/CollectionPage";
@@ -18,8 +17,8 @@ function App() {
                     initial="initialState"
                     animate="animateState"
                     exit="exitState"
-                    transition={{ duration: 0.75 }}
-                    variants={{ initialState: { opacity: 0 }, animateState: { opacity: 1 }, exitState: {} }}
+                    transition={{ duration: 1 }}
+                    variants={{ initialState: { opacity: 0 }, animateState: { opacity: 1 }, exitState: {opacity: 0} }}
                 >
                     <BrowserRouter>
                         <Routes>
