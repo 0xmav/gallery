@@ -1,19 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import artBlocksCollections from "../collections";
 import CollectionPiece from "./CollectionPiece";
 import { useParams } from "react-router-dom";
 import Header from "./Header"
 
 function CollectionPage() {
+
+    let elementQuantity = 6;
     
     const [title, setTitle] = useState(" ");
     const [subtitle, setSubtitle] = useState(" ");
-
-    const projectID = parseInt(useParams().project_id);
-
-    let elementQuantity = 6;
-
     const [next, setNext] = useState(elementQuantity);
+
+    const params = useParams();
+    const projectID = parseInt(params.project_id);
+
+
+    useEffect(() => {
+
+        console.log(params);
+        
+    }, [params])
 
     function handleClick() {
         setNext(next + elementQuantity);
@@ -22,6 +29,7 @@ function CollectionPage() {
     const totalElements = Array.from({ length: next }, (_, index) => {
         return <CollectionPiece key={index} projectID={projectID} tokenID={index} setTitle={setTitle} setSubtitle={setSubtitle} />;
     });
+
 
     return (
         <>

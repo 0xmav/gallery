@@ -1,46 +1,39 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import artBlocksCollections from "../collections"
-import {useNavigate} from "react-router-dom"
+import artBlocksCollections from "../collections";
+import { useNavigate } from "react-router-dom";
 
 function Header({ title = "ArtBlocks Curated", subtitle = "Discovering, tracking and purchasing Art Blocks on the secondary market just got a whole lot better." }) {
-    
     const [inputText, setInputText] = useState("");
     const [searchTerm, setSearchTerm] = useState();
     const navigate = useNavigate();
 
-
     function handleChange(event) {
-      const newValue = event.target.value;
-      setInputText(newValue);
+        const newValue = event.target.value;
+        setInputText(newValue);
     }
 
     function handleClick(event) {
         event.preventDefault();
 
         setSearchTerm(inputText);
-
     }
 
-        useEffect( () => {
+    useEffect(() => {
+        if (searchTerm !== undefined) {
+            const searchResult = artBlocksCollections.find((x) => x.name === searchTerm);
 
+            if (searchResult !== undefined && searchResult !== null) {
+                let project_id = searchResult.project_id;
 
-            if(searchTerm !== undefined) {
-
-                const searchResult = artBlocksCollections.find(x => x.name === searchTerm);
-
-                    if(searchResult !== undefined && searchResult !== null) {
-
-                        const found = searchResult.project_id;
-                        navigate(`/collection/${found}`);
-
-                    } else { return }
-
-            } else { return }
-
-        }, [searchTerm] );
-
-
+                navigate(`../collection/${project_id}`);
+            } else {
+                return;
+            }
+        } else {
+            return;
+        }
+    }, [searchTerm]);
 
     const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
 
@@ -54,9 +47,9 @@ function Header({ title = "ArtBlocks Curated", subtitle = "Discovering, tracking
     };
 
     useEffect(() => {
-        localStorage.setItem('theme', theme);
+        localStorage.setItem("theme", theme);
         document.body.className = theme;
-      }, [theme]);
+    }, [theme]);
 
     return (
         <header>
@@ -70,7 +63,7 @@ function Header({ title = "ArtBlocks Curated", subtitle = "Discovering, tracking
                 </svg>
 
                 <form className="search-bar">
-                    <input placeholder="Search..." name="search" value={inputText} onChange={handleChange}/>
+                    <input placeholder="Search..." name="search" value={inputText} onChange={handleChange} />
                     <button onClick={handleClick}>
                         <svg xmlns="http://www.w3.org/2000/svg" className="icon" viewBox="0 0 16 16">
                             <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />

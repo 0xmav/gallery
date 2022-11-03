@@ -21,12 +21,13 @@ function App() {
                     variants={{ initialState: { opacity: 0 }, animateState: { opacity: 1 }, exitState: {opacity: 0} }}
                 >
                     <BrowserRouter>
-                        <Routes>
-                            <Route path="/" element={<CollectionGrid />} />
-                            <Route path="/collection/:project_id" element={<CollectionPage />} />
-                            <Route path="/?search=:project_id" element={<CollectionPage />} />
-                        </Routes>
-                        <Footer />
+                                <Routes>
+
+                                    <Route path="/" exact element={<CollectionGrid />} />
+                                    <Route path="/collection/:project_id" element={<CollectionPage />} />
+
+                                </Routes>
+                            <Footer />
                     </BrowserRouter>
                 </motion.div>
             </AnimatePresence>
