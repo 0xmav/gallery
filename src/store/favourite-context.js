@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 
 const FavouritesContext = createContext({
     favourites: [],
@@ -8,8 +8,19 @@ const FavouritesContext = createContext({
     itemIsFavouriteHandler: (isFavouritePiece) => {},
 });
 
-export function FavouritesContextPrvider(props) {
+export function FavouritesContextProvider(props) {
     const [userFavourites, setUserFavourites] = useState([]);
+
+    useEffect(() => {
+        localStorage.setItem('userFavourites', JSON.stringify(userFavourites));
+      }, [userFavourites]);
+
+    useEffect(() => {
+        const userFavourites = JSON.parse(localStorage.getItem('userFavourites'));
+        if (userFavourites) {
+            setUserFavourites(userFavourites);
+        }
+      }, []);
 
     // Adding a piece to Favourites
     function addFavouriteHandler(favouritePiece) {
@@ -37,6 +48,8 @@ export function FavouritesContextPrvider(props) {
         removeFavourite: removeFavouriteHandler,
         itemIsFavourite: itemIsFavouriteHandler,
     };
+
+
 
     return <FavouritesContext.Provider value={context}>{props.children}</FavouritesContext.Provider>;
 }

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import {artblocksFetchProject} from "../artblocksFetch";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import {motion} from "framer-motion"
+import { Link } from "react-router-dom";
 
 function CollectionElement(props) {
 
@@ -67,9 +68,9 @@ function CollectionElement(props) {
                         variants={{ initialState: { opacity: 0 }, animateState: { opacity: 1 }, exitState: {} }}
                     >
                 <div className="collection-img">
-                    <a href={data.collectionLink}>
+                    <Link to={data.collectionLink}>
                         <LazyLoadImage key={data.alt} placeholderSrc={data.placeholder} src={data.image} alt={data.alt} effect="blur" />
-                    </a>
+                    </Link>
                 </div>
                 <div className="collection-desc">
                     <h3>{data.collection_name.split("by").shift()}</h3>
@@ -80,7 +81,7 @@ function CollectionElement(props) {
                         </a>
                     </p>
                     <p className="collection-explore-link">
-                        <a href={data.collectionLink}>explore</a>
+                        <Link to={data.collectionLink}>explore</Link>
                     </p>
                 </div>
         </motion.div>

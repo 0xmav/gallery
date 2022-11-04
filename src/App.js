@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 import "./normalize.css";
 import "./style.css";
+import FavouritesPage from "./components/FavouritesPage";
 
 function App() {
     return (
@@ -23,7 +24,7 @@ function App() {
                         <Routes>
                             <Route path="/" exact element={<CollectionGrid />} />
                             <Route path="/collection/:project_id" element={<CollectionPage />} />
-                            <Route path="/favourites" element={<CollectionPage />} />
+                            <Route path="/favourites" element={<FavouritesPage />} />
                         </Routes>
                     <Footer />
                 </motion.div>
