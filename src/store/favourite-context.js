@@ -30,15 +30,15 @@ export function FavouritesContextProvider(props) {
     }
 
     // Removing a piece from Favourites
-    function removeFavouriteHandler(unfavouritePiece) {
+    function removeFavouriteHandler( {tokenID, projectID }) {
         setUserFavourites((prevUserFavourites) => {
-            return prevUserFavourites.filter((piece) => piece.tokenID !== unfavouritePiece);
+            return prevUserFavourites.filter((piece) => piece.tokenID !== tokenID && piece.projectID !== projectID);
         });
     }
 
     // Checking if the piece is favourited
-    function itemIsFavouriteHandler(isFavouritePiece) {
-        return userFavourites.some((piece) => piece.tokenID === isFavouritePiece);
+    function itemIsFavouriteHandler(tokenID, projectID) {
+        return userFavourites.some((piece) => piece.tokenID === tokenID && piece.projectID === projectID);
     }
 
     const context = {

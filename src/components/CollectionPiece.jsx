@@ -6,7 +6,7 @@ import FavouritesContext from "../store/favourite-context";
 function CollectionPiece(props) {
     const favoritesCtx = useContext(FavouritesContext);
 
-    const itemIsFavourite = favoritesCtx.itemIsFavourite(props.tokenID);
+    const itemIsFavourite = favoritesCtx.itemIsFavourite(props.tokenID, props.projectID);
 
     const [data, setData] = useState({
         projectID: props.projectID,
@@ -46,7 +46,6 @@ function CollectionPiece(props) {
         props.setSubtitle(data.collection_name.split("by").pop());
     }
 
-
     function fullScreen() {
         setClickedImg(data.image);
         setClicked(!isClicked);
@@ -57,7 +56,6 @@ function CollectionPiece(props) {
             favoritesCtx.removeFavourite({ projectID: props.projectID, tokenID: props.tokenID });
         } else {
             favoritesCtx.addFavourite({ projectID: props.projectID, tokenID: props.tokenID });
-            console.log(favoritesCtx);
         }
     }
 

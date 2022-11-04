@@ -1,5 +1,4 @@
 import React, { useState, useContext } from "react";
-import artBlocksCollections from "../collections";
 import CollectionPiece from "./CollectionPiece";
 import Header from "./Header"
 import FavouritesContext from "../store/favourite-context";
@@ -7,9 +6,6 @@ import FavouritesContext from "../store/favourite-context";
 function FavouritesPage() {
 
     const favouritesCtx = useContext(FavouritesContext).favourites;
-
-    console.log(favouritesCtx.projectID);
-    console.log(favouritesCtx.tokenID);
 
     let elementQuantity = favouritesCtx.length;
     
@@ -29,7 +25,8 @@ function FavouritesPage() {
             <Header title="My Favs" subtitle="My fav collection" />
 
             <section className="collections-grid">{totalElements}</section>
-            {next < artBlocksCollections.length && (
+
+            {next < elementQuantity.length && (
                 <button className="button button-secondary" onClick={handleClick}>
                     Load more{" "}
                 </button>
