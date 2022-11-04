@@ -4,6 +4,9 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import {motion} from "framer-motion"
 
 function CollectionElement(props) {
+
+    const [isLoading, setIsLoading] = useState(true);
+
     
     const [data, setData] = useState({
         projectID: props.projectID,
@@ -18,8 +21,13 @@ function CollectionElement(props) {
         placeholder: ""
     });
 
+
     useEffect(() => {
+
+        setIsLoading(true);
+
         const fetchData = async () => {
+
             const fetchedData = await artblocksFetchProject(data.projectID);
 
             setData((prev) => {
@@ -35,39 +43,51 @@ function CollectionElement(props) {
                     placeholder: "https://res.cloudinary.com/art-blocks/image/fetch/f_auto,c_limit,w_10,q_auto/https://artblocks-mainnet.s3.amazonaws.com/" + +fetchedData.tokenID + ".png",
                     };
                 });
+
             };
+            setIsLoading(false);
+
 
         fetchData();
-    }, []);
 
-    return (
-        <motion.div
-                    className="collection-element"
-                    initial="initialState"
-                    animate="animateState"
-                    exit="exitState"
-                    transition={{ duration: 1 }}
-                    variants={{ initialState: { opacity: 0 }, animateState: { opacity: 1 }, exitState: {} }}
-                >
-            <div className="collection-img">
-                <a href={data.collectionLink}>
-                    <LazyLoadImage key={data.alt} placeholderSrc={data.placeholder} src={data.image} alt={data.alt} effect="blur" />
-                </a>
-            </div>
-            <div className="collection-desc">
-                <h3>{data.collection_name.split("by").shift()}</h3>
-                <p className="artist-link">
-                    by{" "}
-                    <a href={data.website} target="_blank" rel="noreferrer noopener">
-                        {data.artist}
+
+    }, [data.projectID]);
+
+    if(isLoading) {
+        console.log("I'm loading...");
+        return(<p>Loading...</p>)
+    } else {
+        return (
+            <motion.div
+                        className="collection-element"
+                        initial="initialState"
+                        animate="animateState"
+                        exit="exitState"
+                        transition={{ duration: 1 }}
+                        variants={{ initialState: { opacity: 0 }, animateState: { opacity: 1 }, exitState: {} }}
+                    >
+                <div className="collection-img">
+                    <a href={data.collectionLink}>
+                        <LazyLoadImage key={data.alt} placeholderSrc={data.placeholder} src={data.image} alt={data.alt} effect="blur" />
                     </a>
-                </p>
-                <p className="collection-explore-link">
-                    <a href={data.collectionLink}>explore</a>
-                </p>
-            </div>
-    </motion.div>
-    );
+                </div>
+                <div className="collection-desc">
+                    <h3>{data.collection_name.split("by").shift()}</h3>
+                    <p className="artist-link">
+                        by{" "}
+                        <a href={data.website} target="_blank" rel="noreferrer noopener">
+                            {data.artist}
+                        </a>
+                    </p>
+                    <p className="collection-explore-link">
+                        <a href={data.collectionLink}>explore</a>
+                    </p>
+                </div>
+        </motion.div>
+        );
+    }
+
+    
 }
 
 export default CollectionElement;

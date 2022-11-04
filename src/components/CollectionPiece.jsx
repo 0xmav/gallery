@@ -32,7 +32,7 @@ function CollectionPiece(props) {
         };
 
         fetchData();
-    }, []);
+    }, [data.projectID, data.tokenID]);
 
     const [isClicked, setClicked] = useState(false);
     const [clickedImg, setClickedImg] = useState(null);

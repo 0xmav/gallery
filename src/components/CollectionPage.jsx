@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import artBlocksCollections from "../collections";
 import CollectionPiece from "./CollectionPiece";
 import { useParams } from "react-router-dom";
@@ -14,13 +14,6 @@ function CollectionPage() {
 
     const params = useParams();
     const projectID = parseInt(params.project_id);
-
-
-    useEffect(() => {
-
-        console.log(params);
-        
-    }, [params])
 
     function handleClick() {
         setNext(next + elementQuantity);
