@@ -161,6 +161,18 @@ header .title p {
     align-items: center;
     background-color: var(--primary-light);
     aspect-ratio: 1 / 1;
+    position: relative;
+}
+
+.favourite {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    fill: black;
+}
+
+.favourited-icon {
+    fill: red;
 }
 
 .collection-img img,
@@ -248,6 +260,7 @@ footer p {
     background: rgba(248, 246, 244, 0.9);
     display: flex;
     align-items: center;
+    z-index: 99;
 }
 
 .overlay img {
@@ -256,6 +269,7 @@ footer p {
     max-height: 90%;
     margin: auto;
     box-shadow: 0 5px 25px rgba(0, 0, 0, 0.25);
+    z-index: 98;
 }
 
 .overlay > span {
@@ -266,6 +280,8 @@ footer p {
     z-index: 999;
     cursor: pointer;
 }
+
+
 
 /* transitions */
 .transition-enter {

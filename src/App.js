@@ -2,7 +2,7 @@ import React from "react";
 import Footer from "./components/Footer";
 import CollectionGrid from "./components/CollectionGrid";
 import CollectionPage from "./components/CollectionPage";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 
 import "./normalize.css";
@@ -20,15 +20,12 @@ function App() {
                     transition={{ duration: 1 }}
                     variants={{ initialState: { opacity: 0 }, animateState: { opacity: 1 }, exitState: {opacity: 0} }}
                 >
-                    <BrowserRouter>
-                                <Routes>
-
-                                    <Route path="/" exact element={<CollectionGrid />} />
-                                    <Route path="/collection/:project_id" element={<CollectionPage />} />
-
-                                </Routes>
-                            <Footer />
-                    </BrowserRouter>
+                        <Routes>
+                            <Route path="/" exact element={<CollectionGrid />} />
+                            <Route path="/collection/:project_id" element={<CollectionPage />} />
+                            <Route path="/favourites" element={<CollectionPage />} />
+                        </Routes>
+                    <Footer />
                 </motion.div>
             </AnimatePresence>
         </>
